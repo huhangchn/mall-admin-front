@@ -48,7 +48,7 @@ export default {
         brandId: null,
         brief: null,
         picUrl: null,
-        gallery: null,
+        gallery: "",
         detail: null,
         isOnSale: false,
         basicValueId: [],

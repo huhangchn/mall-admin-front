@@ -28,17 +28,24 @@
         </el-upload>
       </el-form-item>
 
+
       <el-form-item label="宣传画廊">
+        <img class="gallery avatar-uploader" v-for="(galleryUrl, index) in galleryList" :src="galleryUrl" :key="index">
         <el-upload
           :action="uploadAction"
+          :show-file-list="false"
           :on-success="galleryUploadSuccess"
           accept=".jpg,.jpeg,.png,.gif"
           :limit="5"
           multiple
-          list-type="picture-card">
+          list-type="picture-card" style="display: block">
           <i class="el-icon-plus"/>
         </el-upload>
       </el-form-item>
+      <el-form-item label="操作">
+        <el-button type="danger" @click.native.prevent="clearGallery">清空画廊</el-button>
+      </el-form-item>
+
     </el-form>
   </div>
 </template>
@@ -47,48 +54,61 @@
   import category from './category'
   import brand from './brand'
 
-export default {
-  components: {
-    category,
-    brand
-  },
-  props: {
-    goodsInfo: {
-      type: Object,
-      default: undefined
-    }
-  },
-  data() {
-    return {
-      uploadAction: process.env.UPLOAD_URL,
-      rules: {
-        name: [
-          { required: true, message: '请输入商品名称', trigger: 'blur' },
-          { min: 3, max: 40, message: '长度在 3 到 40 个字符', trigger: 'blur' }
-        ]
+  export default {
+    components: {
+      category,
+      brand
+    },
+    props: {
+      goodsInfo: {
+        type: Object,
+        default: undefined
+      }
+    },
+    data() {
+      return {
+        uploadAction: process.env.UPLOAD_URL,
+        rules: {
+          name: [
+            {required: true, message: '请输入商品名称', trigger: 'blur'},
+            {min: 3, max: 40, message: '长度在 3 到 40 个字符', trigger: 'blur'}
+          ]
+        }
+      }
+    },
+    computed: {
+      galleryList() {
+        let gallery = this.goodsInfo.gallery
+        if(gallery){
+          return gallery.split(",")
+        }
+        return []
+      }
+    },
+
+    methods: {
+      picUrlUploadSuccess(response, file) {
+        this.goodsInfo.picUrl = response.data
+      },
+      galleryUploadSuccess(response, file) {
+        if (this.galleryList.length < 5) {
+          if(this.galleryList.length > 0){
+            this.goodsInfo.gallery += ","
+          }
+          this.goodsInfo.gallery += response.data
+        }else{
+          this.$message({
+            message: '最多添加5张图片',
+            type: 'warning',
+            duration: 1000
+          })
+        }
+      },
+      clearGallery(){
+        this.goodsInfo.gallery = ""
       }
     }
-  },
-
-  methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!')
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
-    picUrlUploadSuccess(response, file){
-      this.goodsInfo.picUrl = response.data
-    },
-    galleryUploadSuccess(response, file){
-      this.goodsInfo.gallery = response.data
-    }
   }
-}
 </script>
 
 <style>
@@ -99,9 +119,11 @@ export default {
     position: relative;
     overflow: hidden;
   }
+
   .avatar-uploader .el-upload:hover {
     border-color: #409EFF;
   }
+
   .avatar-uploader-icon {
     font-size: 28px;
     color: #8c939d;
@@ -110,9 +132,16 @@ export default {
     line-height: 178px;
     text-align: center;
   }
+
   .avatar {
     width: 100%;
     height: 100%;
     display: block;
+  }
+
+  .gallery {
+    width: 146px;
+    height: 146px;
+
   }
 </style>

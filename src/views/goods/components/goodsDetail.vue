@@ -4,11 +4,13 @@
       :on-change='changeUpload'
       :action="uploadAction"
       list-type="picture-card"
+      :show-file-list="false"
       :on-preview="handlePictureCardPreview"
       :on-remove="handleRemove"
       :on-success="handleSuccess"
       :limit="1">
-      <i class="el-icon-plus"></i>
+      <img v-if="goodsInfo.detail" :src="goodsInfo.detail" class="avatar">
+      <i class="el-icon-plus" v-if="!goodsInfo.detail"></i>
     </el-upload>
     <el-dialog :visible.sync="dialogVisible">
       <img width="100%" :src="imageUrl" alt="">
