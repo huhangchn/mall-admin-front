@@ -21,7 +21,6 @@
           :action="uploadAction"
           :on-success="picUrlUploadSuccess"
           accept=".jpg,.jpeg,.png,.gif"
-          :limit="1"
           list-type="picture-card">
           <img v-if="goodsInfo.picUrl" :src="goodsInfo.picUrl" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"/>

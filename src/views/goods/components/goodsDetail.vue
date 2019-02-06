@@ -7,8 +7,7 @@
       :show-file-list="false"
       :on-preview="handlePictureCardPreview"
       :on-remove="handleRemove"
-      :on-success="handleSuccess"
-      :limit="1">
+      :on-success="handleSuccess">
       <img v-if="goodsInfo.detail" :src="goodsInfo.detail" class="avatar">
       <i class="el-icon-plus" v-if="!goodsInfo.detail"></i>
     </el-upload>
