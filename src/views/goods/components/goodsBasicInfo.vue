@@ -13,6 +13,9 @@
       <el-form-item label="商品简介" prop="description">
         <el-input v-model="goodsInfo.brief" type="textarea"/>
       </el-form-item>
+      <el-form-item label="商品价格">
+        <el-input v-model="goodsInfo.price"/>
+      </el-form-item>
 
       <el-form-item label="商品图片" prop="picUrl">
         <el-upload
@@ -90,6 +93,9 @@
         this.goodsInfo.picUrl = response.data
       },
       galleryUploadSuccess(response, file) {
+        if(this.goodsInfo.gallery===null||this.goodsInfo.gallery===undefined){
+          this.goodsInfo.gallery = ""
+        }
         if (this.galleryList.length < 5) {
           if(this.galleryList.length > 0){
             this.goodsInfo.gallery += ","

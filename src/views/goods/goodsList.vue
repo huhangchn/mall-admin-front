@@ -38,16 +38,21 @@
           <span>{{ scope.row.name }}</span>
         </template>
       </el-table-column>
+      <el-table-column label="商品价格" width="80px">
+        <template slot-scope="scope">
+          <span>￥{{ scope.row.price }}</span>
+        </template>
+      </el-table-column>
       <el-table-column label="商品图片" width="110px" align="center">
         <template slot-scope="scope">
           <img :src="scope.row.picUrl" class="pic">
         </template>
       </el-table-column>
-      <el-table-column label="画廊" width="110px" align="center">
-        <template slot-scope="scope">
-          <img :src="scope.row.gallery" class="pic">
-        </template>
-      </el-table-column>
+      <!--<el-table-column label="画廊" width="110px" align="center">-->
+        <!--<template slot-scope="scope">-->
+          <!--<img :src="scope.row.gallery" class="pic">-->
+        <!--</template>-->
+      <!--</el-table-column>-->
       <el-table-column label="状态" class-name="status-col" width="150px">
         <template slot-scope="scope">
           <p>上架：

@@ -41,11 +41,11 @@
           <el-input placeholder="请输入尺码" clearable v-model="scope.row.shoeSize" :disabled="true"></el-input>
         </template>
       </el-table-column>
-      <el-table-column prop="price" align="center" label="销售价格">
-        <template slot-scope="scope">
-          <el-input placeholder="请输入价格" clearable v-model="scope.row.price"></el-input>
-        </template>
-      </el-table-column>
+      <!--<el-table-column prop="price" align="center" label="销售价格">-->
+        <!--<template slot-scope="scope">-->
+          <!--<el-input placeholder="请输入价格" clearable v-model="scope.row.price"></el-input>-->
+        <!--</template>-->
+      <!--</el-table-column>-->
       <el-table-column prop="store" align="center" label="商品库存">
         <template slot-scope="scope">
           <el-input placeholder="请输入库存" clearable v-model="scope.row.store"></el-input>
