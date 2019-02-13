@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-form ref="ruleForm" :model="goodsInfo" :rules="rules" label-width="100px">
+    <el-form :model="goodsInfo" label-width="100px">
       <el-form-item label="商品名称" prop="name">
         <el-input v-model="goodsInfo.name"/>
       </el-form-item>
@@ -16,7 +16,9 @@
       <el-form-item label="商品价格">
         <el-input v-model="goodsInfo.price"/>
       </el-form-item>
-
+      <el-form-item label="是否上架">
+        <el-switch v-model="goodsInfo.isOnSale"/>
+      </el-form-item>
       <el-form-item label="商品图片" prop="picUrl">
         <el-upload
           class="avatar-uploader"
@@ -69,13 +71,7 @@
     },
     data() {
       return {
-        uploadAction: process.env.UPLOAD_URL,
-        rules: {
-          name: [
-            {required: true, message: '请输入商品名称', trigger: 'blur'},
-            {min: 3, max: 40, message: '长度在 3 到 40 个字符', trigger: 'blur'}
-          ]
-        }
+        uploadAction: process.env.UPLOAD_URL
       }
     },
     computed: {
