@@ -78,7 +78,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.adding = true
+        // this.adding = true
         const {edit} = this
         addOrUpdateGoods(Object.assign({}, this.goodsInfo), {edit}).then(() => {
           this.$message({

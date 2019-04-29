@@ -73,10 +73,10 @@ export const constantRouterMap = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+        meta: { title: '首页', icon: 'dashboard', noCache: true }
       }
     ]
-  },
+  }/*,
   {
     path: '/documentation',
     component: Layout,
@@ -102,7 +102,7 @@ export const constantRouterMap = [
         meta: { title: 'guide', icon: 'guide', noCache: true }
       }
     ]
-  }
+  }*/
 ]
 
 export default new Router({
@@ -112,7 +112,7 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
-  {
+  /*{
     path: '/permission',
     component: Layout,
     redirect: '/permission/index',
@@ -155,10 +155,10 @@ export const asyncRouterMap = [
         meta: { title: 'icons', icon: 'icon', noCache: true }
       }
     ]
-  },
-  goodsRouter,
+  },*/
+  goodsRouter
   /** When your routing table is too long, you can split it into small modules**/
-  componentsRouter,
+  /*componentsRouter,
   chartsRouter,
   nestedRouter,
   tableRouter,
@@ -366,5 +366,5 @@ export const asyncRouterMap = [
     ]
   },
 
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/404', hidden: true }*/
 ]
