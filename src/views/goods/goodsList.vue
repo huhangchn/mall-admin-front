@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="listQuery.number" placeholder="商品编号" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
+      <el-input v-model="listQuery.id" placeholder="商品编号" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
       <el-input v-model="listQuery.name" placeholder="商品名称" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter"/>
 
       <category :object="listQuery"/>
@@ -25,7 +25,7 @@
       </el-table-column>
       <el-table-column label="商品编号" prop="id" align="center" width="100px">
         <template slot-scope="scope">
-          <span>{{ scope.row.number }}</span>
+          <span>{{ scope.row.id }}</span>
         </template>
       </el-table-column>
       <el-table-column label="创建时间" width="150px" align="center">
@@ -95,7 +95,7 @@ export default {
       listQuery: {
         page: 1,
         limit: 20,
-        number: undefined,
+        id: undefined,
         name: undefined,
         categoryId: undefined,
         brandId: undefined,

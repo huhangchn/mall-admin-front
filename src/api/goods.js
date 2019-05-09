@@ -29,3 +29,69 @@ export function changeGoodsSaleStatus(params) {
     params: params
   })
 }
+
+export function fetchbrandList(query) {
+  return request({
+    url: '/brand/listPage',
+    method: 'get',
+    params: query
+  })
+}
+
+export function addBrand(data) {
+  return request({
+    url: '/brand',
+    method: 'post',
+    data: data
+  })
+}
+export function deleteBrand(brandId) {
+  return request({
+    url: '/brand/' + brandId,
+    method: 'delete'
+  })
+}
+export function editBrand(data) {
+  return request({
+    url: '/brand/',
+    method: 'put',
+    data: data
+  })
+}
+
+export function fetchCategoryList(query) {
+  return request({
+    url: '/category/listPage',
+    method: 'get',
+    params: query
+  })
+}
+
+export function addCategory(data) {
+  return request({
+    url: '/category',
+    method: 'post',
+    data: data
+  })
+}
+export function deleteCategory(id) {
+  return request({
+    url: '/category/' + id,
+    method: 'delete'
+  })
+}
+export function editCategory(data) {
+  return request({
+    url: '/category/',
+    method: 'put',
+    data: data
+  })
+}
+
+export function fetchOrderList(query) {
+  return request({
+    url: '/order/listPage',
+    method: 'get',
+    params: query
+  })
+}

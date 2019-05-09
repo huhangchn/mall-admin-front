@@ -8,10 +8,22 @@ const goodsRouter = {
   redirect: '/goods/goodsList',
   name: 'Goods',
   meta: {
-    title: '商品',
+    title: '商城管理',
     icon: 'table'
   },
   children: [
+    {
+      path: 'brand',
+      component: () => import('@/views/goods/brandList/'),
+      name: 'brandManager',
+      meta: {title: '品牌列表'}
+    },
+    {
+      path: 'category',
+      component: () => import('@/views/goods/categoryList/'),
+      name: 'categoryManager',
+      meta: {title: '分类列表'}
+    },
     {
       path: 'goodsList',
       component: () => import('@/views/goods/goodsList'),
@@ -30,6 +42,12 @@ const goodsRouter = {
       name: 'GoodsEdit',
       meta: {title: '编辑商品'},
       hidden: true
+    },
+    {
+      path: 'orderList',
+      component: () => import('@/views/goods/orderList/'),
+      name: 'OrderList',
+      meta: {title: '订单管理'}
     }
   ]
 }
